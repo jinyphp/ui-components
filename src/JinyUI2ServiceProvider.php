@@ -81,6 +81,9 @@ class JinyUI2ServiceProvider extends ServiceProvider
         Blade::component($this->package.'::components.'.'flatpickr.date', 'flatpickr-date');
         Blade::component($this->package.'::components.'.'flatpickr.datetime', 'flatpickr-datetime');
 
+        // action
+        Blade::component($this->package.'::components.'.'actions.action-message', 'action-message');
+
     }
 
     public function register()
