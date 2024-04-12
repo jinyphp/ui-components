@@ -41,6 +41,7 @@ class JinyUI2ServiceProvider extends ServiceProvider
         ## flex 박스
         Blade::component($this->package.'::components.'.'flex.flex', 'flex');
 
+        /*
         Blade::component('jinyui::components.'.'flex._.row', 'flex-row');
         Blade::component('jinyui::components.'.'flex._.col', 'flex-col'); // 세로배치
         Blade::component('jinyui::components.'.'flex._.center', 'flex-center'); //가운데
@@ -50,10 +51,13 @@ class JinyUI2ServiceProvider extends ServiceProvider
         Blade::component('jinyui::components.'.'flex._.divide', 'divide');
         Blade::component('jinyui::components.'.'flex._.divide-y', 'divide-y');
         Blade::component('jinyui::components.'.'flex._.divide-item', 'divide-item');
+        */
 
         // flex박스로 화면 전체 100
+        /*
         Blade::component($this->package.'::components.'.'flex.screen_full', 'flex-screen-full');
         Blade::component($this->package.'::components.'.'flex.flex_column', 'flex-column');
+        */
 
 
 
