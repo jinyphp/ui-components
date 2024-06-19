@@ -1,6 +1,6 @@
 {
-    "name": "jiny/ui2",
-    "description": "jiny theme ui hpyer with bootstrap",
+    "name": "jiny/ui-components",
+    "description": "jiny ui components",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -11,11 +11,11 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^8.1"
+        "php": "^8.2"
     },
     "autoload": {
         "psr-4": {
-            "Jiny\\UI2\\":"src/"
+            "Jiny\\UI\\Components\\":"src/"
         },
         "files" : [
             "src/Helpers/Helper.php"
@@ -23,13 +23,13 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Jiny\\UI2\\Tests\\": "tests/"
+            "Jiny\\UI\\Components\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Jiny\\UI2\\JinyUI2ServiceProvider"
+                "Jiny\\UI\\Components\\JinyUIComponentServiceProvider"
             ]
         }
     }

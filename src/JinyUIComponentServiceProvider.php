@@ -1,5 +1,5 @@
 <?php
-namespace Jiny\UI2;
+namespace Jiny\UI\Components;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\File;
 
 class JinyUI2ServiceProvider extends ServiceProvider
 {
-    private $package = "jiny-ui2";
+    private $package = "jiny-ui-component";
 
     public function boot()
     {
