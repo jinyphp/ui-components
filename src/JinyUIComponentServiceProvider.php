@@ -10,7 +10,7 @@ use Livewire\Livewire;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\File;
 
-class JinyUI2ServiceProvider extends ServiceProvider
+class JinyUIComponentServiceProvider extends ServiceProvider
 {
     private $package = "jiny-ui-component";
 
