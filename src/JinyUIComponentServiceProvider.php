@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\File;
 class JinyUIComponentServiceProvider extends ServiceProvider
 {
     private $package = "jiny-ui-component";
+    //private $componentPath;
+    private $components = [];
 
     public function boot()
     {
@@ -88,6 +90,56 @@ class JinyUIComponentServiceProvider extends ServiceProvider
         // action
         Blade::component($this->package.'::components.'.'actions.action-message', 'action-message');
 
+        // 동적 컴포넌트
+        $this->dynamicComponents();
+    }
+
+    // dynamic안에 있는 blade를 동적으로 컴포넌트화 합니다.
+    private function dynamicComponents()
+    {
+        $base = __DIR__.'/../resources/views';
+        $path = $base.DIRECTORY_SEPARATOR."dynamics";
+
+        $this->rescueComponents($path, ['ui']);
+    }
+
+    private function rescueComponents($path, $prefix)
+    {
+        $dir = scandir($path);
+        foreach($dir as $file) {
+            if($file == '.' || $file == '..') continue;
+            if($file[0] == '.') continue; // 숨김파일
+
+            // 디렉터리 재귀호출
+            if(is_dir($path.DIRECTORY_SEPARATOR.$file)) {
+                $prefix []= $file; // push
+                $this->rescueComponents($path.DIRECTORY_SEPARATOR.$file, $prefix);
+                array_pop($prefix); // pop
+            }
+
+            if(substr($file, -10) === '.blade.php') {
+                $name = substr($file, 0, strlen($file)-10);
+                $_name = implode('-',$prefix)."-".$name;
+
+                if(!in_array($_name, $this->components)) {
+                    $this->components []= $_name;
+
+                    if(count($prefix)>1) {
+                        $comPath = $this->package."::dynamics".".";
+                        $comPath .= implode('-',array_slice($prefix, 1)).".";
+                        $comPath .= $name;
+                    } else {
+                        $comPath = $this->package."::dynamics".".";
+                        $comPath .= $name;
+                    }
+
+                    //dump($comPath);
+                    //dump($_name);
+
+                    Blade::component($comPath,$_name);
+                }
+            }
+        }
     }
 
     public function register()
