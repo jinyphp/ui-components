@@ -40,8 +40,7 @@ class JinyUIComponentServiceProvider extends ServiceProvider
 
 
         // Flex
-        ## flex 박스
-        Blade::component($this->package.'::components.'.'flex.flex', 'flex');
+
 
         /*
         Blade::component('jinyui::components.'.'flex._.row', 'flex-row');
@@ -63,8 +62,6 @@ class JinyUIComponentServiceProvider extends ServiceProvider
 
 
 
-        // 컴포넌트
-        Blade::component($this->package.'::components.'.'avata', 'avata'); //아바타 이미지 출력
 
         // Toggle
         Blade::component(\Jiny\UI2\View\ToggleSwitch::class, 'toggle-switch');
@@ -92,6 +89,22 @@ class JinyUIComponentServiceProvider extends ServiceProvider
 
         // 동적 컴포넌트
         $this->dynamicComponents();
+
+        // 폼 컴포넌트
+        $this->forms();
+    }
+
+    // Bootstrap 폼 컴포넌트
+    private function forms()
+    {
+        Blade::component(
+            $this->package.'::components.'.'forms.input.checkbox',
+            'form-checkbox');
+
+        Blade::component($this->package.'::components.'.'forms.input.text_clear', 'form-text-clear');
+
+
+        Blade::component($this->package.'::components.'.'forms.select.language', 'form-select-language');
     }
 
     // dynamic안에 있는 blade를 동적으로 컴포넌트화 합니다.

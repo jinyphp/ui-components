@@ -1,3 +1,3 @@
-<small class="form-text text-muted">
+<div class="form-text text-muted">
     {{$slot}}
-</small>
+</div>
